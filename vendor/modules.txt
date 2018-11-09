@@ -1,0 +1,2 @@
+# github.com/romanitalian/gomodtest v1.0.2
+github.com/romanitalian/gomodtest
