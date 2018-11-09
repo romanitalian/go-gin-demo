@@ -3,10 +3,14 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/sync/errgroup"
+	"html/template"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
+
 var (
 	g errgroup.Group
 )
@@ -16,6 +20,7 @@ var secrets = gin.H{
 	"austin": gin.H{"email": "austin@example.com", "phone": "666"},
 	"lena":   gin.H{"email": "lena@guapa.com", "phone": "523443"},
 }
+
 func router01() http.Handler {
 	r := gin.New()
 
@@ -59,9 +64,9 @@ func router01() http.Handler {
 }
 
 func router02() http.Handler {
-	r := gin.New()
-	r.Use(gin.Recovery())
-	r.GET("/", func(c *gin.Context) {
+	router := gin.New()
+	router.Use(gin.Recovery())
+	router.GET("/welcome", func(c *gin.Context) {
 		c.JSON(
 			http.StatusOK,
 			gin.H{
@@ -71,9 +76,37 @@ func router02() http.Handler {
 		)
 	})
 
-	return r
+	t, err := loadTemplate()
+	if err != nil {
+		panic(err)
+	}
+	router.SetHTMLTemplate(t)
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "/html/index.tmpl", gin.H{
+			"Foo": "World",
+		})
+	})
+	return router
 }
 
+
+func loadTemplate() (*template.Template, error) {
+	t := template.New("")
+	for name, file := range Assets.Files {
+		if file.IsDir() || !strings.HasSuffix(name, ".tmpl") {
+			continue
+		}
+		h, err := ioutil.ReadAll(file)
+		if err != nil {
+			return nil, err
+		}
+		t, err = t.New(name).Parse(string(h))
+		if err != nil {
+			return nil, err
+		}
+	}
+	return t, nil
+}
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
@@ -119,7 +152,6 @@ func main() {
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
-
 
 	g.Go(func() error {
 		return server01.ListenAndServe()
