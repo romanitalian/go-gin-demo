@@ -16,3 +16,5 @@ go-assets-builder html -o assets.go
 
 Собрать всё в один бинарник - вместе с шаблонами
 go build -o assets-in-binary
+
+4. Попробовал использовать go модули (https://roberto.selbach.ca/intro-to-go-modules/)
