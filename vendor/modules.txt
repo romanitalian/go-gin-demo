@@ -1,2 +1,55 @@
-# github.com/romanitalian/gomodtest v1.0.2
-github.com/romanitalian/gomodtest
+# github.com/davecgh/go-spew v1.1.1
+## explicit
+github.com/davecgh/go-spew/spew
+# github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7
+## explicit
+github.com/gin-contrib/sse
+# github.com/gin-gonic/gin v1.3.0
+## explicit
+github.com/gin-gonic/gin
+github.com/gin-gonic/gin/binding
+github.com/gin-gonic/gin/json
+github.com/gin-gonic/gin/render
+# github.com/golang/protobuf v1.2.0
+## explicit
+github.com/golang/protobuf/proto
+# github.com/jessevdk/go-assets v0.0.0-20160921144138-4f4301a06e15
+## explicit
+github.com/jessevdk/go-assets
+# github.com/json-iterator/go v1.1.5
+## explicit
+github.com/json-iterator/go
+# github.com/mattn/go-isatty v0.0.4
+## explicit
+github.com/mattn/go-isatty
+# github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+## explicit
+github.com/modern-go/concurrent
+# github.com/modern-go/reflect2 v1.0.1
+## explicit
+github.com/modern-go/reflect2
+# github.com/pmezard/go-difflib v1.0.0
+## explicit
+github.com/pmezard/go-difflib/difflib
+# github.com/stretchr/testify v1.3.0
+## explicit
+github.com/stretchr/testify/assert
+# github.com/ugorji/go/codec v0.0.0-20181022190402-e5e69e061d4f
+## explicit
+github.com/ugorji/go/codec
+# golang.org/x/net v0.7.0
+## explicit; go 1.17
+# golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+## explicit
+golang.org/x/sync/errgroup
+# golang.org/x/sys v0.5.0
+## explicit; go 1.17
+golang.org/x/sys/unix
+# gopkg.in/go-playground/assert.v1 v1.2.1
+## explicit
+# gopkg.in/go-playground/validator.v8 v8.18.2
+## explicit
+gopkg.in/go-playground/validator.v8
+# gopkg.in/yaml.v2 v2.2.1
+## explicit
+gopkg.in/yaml.v2
